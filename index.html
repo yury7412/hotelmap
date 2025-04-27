@@ -55,28 +55,29 @@
     <h1>Отели и гостиницы Самарской области</h1>
     
     <div class="tabs">
-        <button class="tab-btn active" onclick="showMap('samara')">Самара</button>
-        <button class="tab-btn" onclick="showMap('tolyatti')">Тольятти</button>
-        <button class="tab-btn" onclick="showMap('syzran')">Сызрань</button>
-        <button class="tab-btn" onclick="showMap('zhigulevsk')">Жигулёвск</button>
-        <button class="tab-btn" onclick="showMap('novokuybyshevsk')">Новокуйбышевск</button>
+        <button class="tab-btn active" onclick="showMap('samara', event)">Самара</button>
+        <button class="tab-btn" onclick="showMap('tolyatti', event)">Тольятти</button>
+        <button class="tab-btn" onclick="showMap('syzran', event)">Сызрань</button>
+        <button class="tab-btn" onclick="showMap('zhigulevsk', event)">Жигулёвск</button>
+        <button class="tab-btn" onclick="showMap('novokuybyshevsk', event)">Новокуйбышевск</button>
     </div>
 
     <div class="map-container">
-        <iframe id="map-frame" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d119981.25772198667!2d50.141934!3d53.195533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1shotels!5e0!3m2!1sen!2s!4v1714220000000!5m2!1sen!2s" allowfullscreen></iframe>
+        <iframe id="map-frame" src="https://yandex.ru/map-widget/v1/?ll=50.141934%2C53.195533&z=12&mode=search&text=отели"></iframe>
     </div>
 
     <script>
-        function showMap(city) {
+        function showMap(city, event) {
             const maps = {
-                samara: 'https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d119981.25772198667!2d50.141934!3d53.195533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1shotels!5e0!3m2!1sen!2s!4v1714220000000!5m2!1sen!2s',
-                tolyatti: 'https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d47038.27516637309!2d49.346264!3d53.507836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1shotels!5e0!3m2!1sen!2s!4v1714220000000!5m2!1sen!2s',
-                syzran: 'https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d47038.27516637309!2d48.468383!3d53.155533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1shotels!5e0!3m2!1sen!2s!4v1714220000000!5m2!1sen!2s',
-                zhigulevsk: 'https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d47038.27516637309!2d49.495913!3d53.399836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1shotels!5e0!3m2!1sen!2s!4v1714220000000!5m2!1sen!2s',
-                novokuybyshevsk: 'https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d47038.27516637309!2d49.946264!3d53.107836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1shotels!5e0!3m2!1sen!2s!4v1714220000000!5m2!1sen!2s'
+                samara: 'https://yandex.ru/map-widget/v1/?ll=50.141934%2C53.195533&z=12&mode=search&text=отели',
+                tolyatti: 'https://yandex.ru/map-widget/v1/?ll=49.346264%2C53.507836&z=12&mode=search&text=отели',
+                syzran: 'https://yandex.ru/map-widget/v1/?ll=48.468383%2C53.155533&z=12&mode=search&text=отели',
+                zhigulevsk: 'https://yandex.ru/map-widget/v1/?ll=49.495913%2C53.399836&z=12&mode=search&text=отели',
+                novokuybyshevsk: 'https://yandex.ru/map-widget/v1/?ll=49.946264%2C53.107836&z=12&mode=search&text=отели'
             };
 
             document.getElementById('map-frame').src = maps[city];
+            
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
