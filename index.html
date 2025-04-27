@@ -3,16 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Гостиницы Самарской области</title>
-    
+    <title>Отели Самарской области</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            background: orange;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .tab-btn:hover {
+            background: rgb(255, 183, 50);
+        }
+        .tab-btn.active {
+            background: rgb(255, 109, 36);
+        }
+        .map-container {
+            width: 100%;
+            height: 600px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
 </head>
 <body>
-    <iframe 
-            src="https://yandex.ru/maps/51/samara/?ll=50.141934%2C53.195533&mode=search&oid=1124715035&ol=biz&z=10.5" 
-            width="100%" 
-            height="600" 
-            frameborder="1" 
-            allowfullscreen="true">
-        </iframe>
+    <h1>Отели и гостиницы Самарской области</h1>
+    
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showMap('samara')">Самара</button>
+        <button class="tab-btn" onclick="showMap('tolyatti')">Тольятти</button>
+        <button class="tab-btn" onclick="showMap('syzran')">Сызрань</button>
+        <button class="tab-btn" onclick="showMap('zhigulevsk')">Жигулёвск</button>
+        <button class="tab-btn" onclick="showMap('novokuybyshevsk')">Новокуйбышевск</button>
+    </div>
+
+    <div class="map-container">
+        <iframe id="map-frame" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d119981.25772198667!2d50.141934!3d53.195533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1shotels!5e0!3m2!1sen!2s!4v1714220000000!5m2!1sen!2s" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        function showMap(city) {
+            const maps = {
+                samara: 'https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d119981.25772198667!2d50.141934!3d53.195533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1shotels!5e0!3m2!1sen!2s!4v1714220000000!5m2!1sen!2s',
+                tolyatti: 'https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d47038.27516637309!2d49.346264!3d53.507836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1shotels!5e0!3m2!1sen!2s!4v1714220000000!5m2!1sen!2s',
+                syzran: 'https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d47038.27516637309!2d48.468383!3d53.155533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1shotels!5e0!3m2!1sen!2s!4v1714220000000!5m2!1sen!2s',
+                zhigulevsk: 'https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d47038.27516637309!2d49.495913!3d53.399836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1shotels!5e0!3m2!1sen!2s!4v1714220000000!5m2!1sen!2s',
+                novokuybyshevsk: 'https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d47038.27516637309!2d49.946264!3d53.107836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1shotels!5e0!3m2!1sen!2s!4v1714220000000!5m2!1sen!2s'
+            };
+
+            document.getElementById('map-frame').src = maps[city];
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
